@@ -1,0 +1,22 @@
+<mat-card class="user-data-header">
+    <img src="assets/img/profile.jpeg">
+    <div class="user-data">
+        <h2>{{ user.firstName}} {{ user.lastName }}</h2>
+        email: {{ user.mail }}
+    </div>
+</mat-card>
+
+
+<mat-card class="mt-32">
+    <button mat-icon-button class="pin-right-upper-corner" [matMenuTriggerFor]="menu" (click)="openAdressDialog()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+      </mat-menu>
+    <mat-card-title>Address</mat-card-title>
+    <mat-card-content>
+        {{ user.street }} <br>
+        {{ user.zipCode }} {{ user.city }}
+    </mat-card-content>
+</mat-card>
