@@ -10,6 +10,7 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 })
 export class UserComponent implements OnInit {
 
+  Ueser = new Ueser();
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
