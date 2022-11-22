@@ -9,21 +9,37 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dialog-edit-user.component.scss']
 })
 export class DialogEditUserComponent implements OnInit {
-  birthDate!: Date;
-  user!: User;
+  user = new User();
+  birthDate!: number;
   loading = false;
   userId!:string;
-  constructor( private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogEditUserComponent> ) { }
+  constructor( private firestore: AngularFirestore,  public dialogRef: MatDialogRef<DialogEditUserComponent> ) { }
 
 
   ngOnInit(): void {
+    
+      this.getUser();
+    
+  }
+
+  getUser() {
+  
+    this.firestore
+      .collection('users')
+      .doc(this.userId)
+      .valueChanges()
+      .subscribe((user: any) => {
+        this.user = user;
+        console.log('user', user)
+      });
   }
 
   saveUser(){
+    this.loading = true;
     this.firestore
     .collection('users')
     .doc(this.userId)
-    .update(this.user.toJSON())
+    .update({ firstName: this.user.firstName, lastName: this.user.lastName, mail: this.user.mail, birthDate: this.user.birthDate })
     .then(() => {
       this.loading = false;
       this.dialogRef.close();

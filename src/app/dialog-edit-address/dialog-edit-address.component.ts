@@ -15,14 +15,27 @@ export class DialogEditAddressComponent implements OnInit {
   constructor( private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogEditAddressComponent> ) { }
 
   ngOnInit(): void {
-    console.log('user show', this.user);
+    this.getUser();
+    
+  }
+
+  getUser() {
+    this.firestore
+      .collection('users')
+      .doc(this.userId)
+      .valueChanges()
+      .subscribe((user: any) => {
+        this.user = user;
+        console.log('user', user)
+      });
   }
 
   saveUser(){
+    this.loading = true;
     this.firestore
     .collection('users')
     .doc(this.userId)
-    .update(this.user.toJSON())
+    .update({ street: this.user.street, zipCode: this.user.zipCode, city: this.user.city })
     .then(() => {
       this.loading = false;
       this.dialogRef.close();

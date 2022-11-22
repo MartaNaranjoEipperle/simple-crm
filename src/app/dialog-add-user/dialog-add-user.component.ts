@@ -31,5 +31,4 @@ export class DialogAddUserComponent implements OnInit {
       });
   }
 
-
 }
