@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ueser } from 'src/models/user.class';
+import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./dialog-add-user.component.scss']
 })
 export class DialogAddUserComponent implements OnInit {
-  user = new Ueser();
+  user = new User();
   birthDate!: Date;
   loading = false;
   constructor( private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogAddUserComponent> ) { }
@@ -30,5 +30,6 @@ export class DialogAddUserComponent implements OnInit {
     this.dialogRef.close();
       });
   }
+
 
 }
