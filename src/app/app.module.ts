@@ -27,6 +27,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatNativeDateModule,
     FormsModule,
     MatProgressBarModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
